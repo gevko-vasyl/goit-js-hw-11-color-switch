@@ -17,19 +17,22 @@ let timerIsActive = false;
 let timerId = null; 
 
 startBtn.addEventListener('click', () => {
-    if (timerIsActive) {
+  if (timerIsActive) {
+      
         return
-    };
+  };
+  startBtn.setAttribute('disabled', 'disabled')
     timerIsActive = true;
     timerId = setInterval(() => {
-    let random = randomIntegerFromInterval(0, colors.length - 1);
+    const random = randomIntegerFromInterval(0, colors.length - 1);
         document.body.style.backgroundColor = colors[random];
     }, 1000);
 });
 
 stopBtn.addEventListener('click', () => {
     clearInterval(timerId);
-    timerIsActive = false;
+  timerIsActive = false;
+  startBtn.removeAttribute('disabled');
 });
 
 
